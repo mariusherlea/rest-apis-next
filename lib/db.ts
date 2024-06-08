@@ -13,4 +13,17 @@ const connect = async () => {
     console.log("Connecting...");
     return;
   }
+
+  try {
+    mongoose.connect(MONGODB_URI!, {
+      dbName: "next14restapi",
+      bufferCommands: true,
+    });
+    console.log("Connected");
+  } catch (err: any) {
+    console.log("Error", err);
+    throw new Error("Error: ", err);
+  }
 };
+
+export default connect;
